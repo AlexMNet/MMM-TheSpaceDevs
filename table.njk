@@ -1,0 +1,28 @@
+{% if launches.length %}
+  <table>
+      <thead>
+          <tr>
+              <th>Rocket</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Window</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% for launch in launches %}
+          <tr>
+              <td>{{launch.rocket}}</td>
+              <td>{{launch.date}}</td>
+              <td>{{launch.status}}</td>
+              <td>{{launch.window}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+  {% if error %}
+    <p>⚠️ {{ error }}</p>
+  {% else %}
+    <p>Loading...</p>
+  {% endif %}
+{% endif %}

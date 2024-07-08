@@ -1,0 +1,24 @@
+.MMM-TheSpaceDevs td {
+  text-align: left;
+  font-size: 0.8em;
+  line-height: 1em;
+}
+
+.MMM-TheSpaceDevs th {
+  text-align: left;
+  font-size: 0.9em;
+  line-height: 1em;
+}
+
+.MMM-TheSpaceDevs table {
+  width: 500px;
+  margin: 0 auto;
+  table-layout: fixed;
+}
+
+.MMM-TheSpaceDevs div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
