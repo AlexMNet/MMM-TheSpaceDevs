@@ -8,7 +8,8 @@ Module.register('MMM-TheSpaceDevs', {
     type: 'table',
     locationIds: [],
     apiKey: '',
-    headerText: 'Upcoming',
+    width: 600,
+    headerText: 'Upcoming Launches',
     apiBase: 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json',
   },
 
@@ -31,7 +32,7 @@ Module.register('MMM-TheSpaceDevs', {
 
   getHeader: function () {
     if (this.config.type === 'detail') return null;
-    this.data.header = this.config.headerText + ' - ' + ' LAUNCHES';
+    this.data.header = this.config.headerText;
     return this.data.header;
   },
 
@@ -104,6 +105,22 @@ Module.register('MMM-TheSpaceDevs', {
       };
     });
 
+    const successColor = '#4ade80';
+    const warningColor = '#f59e0b';
+    const errorColor = '#f87171';
+    const infoColor = '#38bdf8';
+
+    const statusColor = {
+      Go: successColor,
+      'In Flight': successColor,
+      Success: successColor,
+      TBC: warningColor,
+      TBD: warningColor,
+      Hold: warningColor,
+      Failure: errorColor,
+      'Partial Failure': errorColor,
+    };
+
     const launch = this.launch.results[0];
 
     const upcomingLaunch = {
@@ -119,12 +136,14 @@ Module.register('MMM-TheSpaceDevs', {
       status: launch.status.abbrev,
       orbit: launch.mission.orbit.abbrev,
       isUpcoming: this.isUpcoming,
+      statusColor: statusColor[launch.status.abbrev],
     };
 
     return {
       launches,
       upcomingLaunch,
       error: this.error,
+      width: this.config.width,
     };
   },
 

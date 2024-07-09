@@ -1,12 +1,11 @@
-<div style="max-width: 35%;">
+<div style="max-width: {{width}}px;">
   {% if upcomingLaunch %}
   <div style="position: relative">
-  <img src="{{upcomingLaunch.image}}" width="100%" style="aspect-ratio: 5/4; border-radius: 8px; margin-bottom: 6px;"/>
-  <span style="background-color: #22c55e; padding: 3px 10px; border-radius: 50px; font-size: 14px; color: white; position: absolute; top: 12px; left: 12px;">{{upcomingLaunch.status}}</span>
+  <img src="{{upcomingLaunch.image}}" width="100%" style="aspect-ratio: 5/4; width: 100%; border-radius: 8px; margin-bottom: 6px;"/>
   {% if upcomingLaunch.orbit %}
-  <span style="background-color: #0ea5e9; padding: 3px 10px; border-radius: 50px; font-size: 14px; color: white; position: absolute; top: 12px; right: 12px;">{{upcomingLaunch.orbit}}</span>
+  <span style="background-color: #38bdf8; padding: 3px 10px; border-radius: 0px 0px 8px 0px; font-size: 14px; color: white; position: absolute; bottom: 6px; right: 0px;">Orbit: {{upcomingLaunch.orbit}}</span>
   {% endif %}
-    <span style="background-color: #f59e0b; padding: 3px 10px; border-radius: 0px 0px 0px 8px; font-size: 14px; color: white; position: absolute; bottom: 6px; left: 0px;">Status: {{upcomingLaunch.status}}</span>
+    <span style="background-color: {{upcomingLaunch.statusColor}}; padding: 3px 10px; border-radius: 0px 0px 0px 8px; font-size: 14px; color: white; position: absolute; bottom: 6px; left: 0px;">Status: {{upcomingLaunch.status}}</span>
   </div>
   <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
     <h2 style="margin: 0;"> {{upcomingLaunch.rocket}} - {{upcomingLaunch.company}}</h2>
@@ -15,7 +14,11 @@
     <span>{{date}}</span>
   </div>
   {% else %}
-  <h1>Loading...</h1>
+  {% if error %}
+    <h1>⚠️ {{ error }}</h1>
+  {% else %}
+    <h1>Loading...</h1>
+  {% endif %}
   {% endif %}
 
 </div>
