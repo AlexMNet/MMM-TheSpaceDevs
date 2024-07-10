@@ -195,6 +195,7 @@ Module.register('MMM-TheSpaceDevs', {
 
         this.error = 'Something went wrong...';
         self.updateDom();
+        self.scheduleUpdate(60 * 1000);
         Log.info('Something went wrong. Check Configuration...');
       });
   },
