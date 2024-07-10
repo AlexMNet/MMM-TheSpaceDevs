@@ -43,6 +43,7 @@ Module.register('MMM-TheSpaceDevs', {
 
     this.launch = [];
     this.error = '';
+    this.lastFetched = '';
     this.fetchLaunchData();
 
     // Set countdown
@@ -123,6 +124,10 @@ Module.register('MMM-TheSpaceDevs', {
 
     const launch = this.launch.results[0];
 
+    const lastUpdated = moment(launch.last_updated).format(
+      'MMMM Do YYYY, h:mm:ss a'
+    );
+
     const upcomingLaunch = {
       rocket: launch.rocket.configuration.name,
       image: launch.image,
@@ -137,6 +142,8 @@ Module.register('MMM-TheSpaceDevs', {
       orbit: launch.mission.orbit.abbrev,
       isUpcoming: this.isUpcoming,
       statusColor: statusColor[launch.status.abbrev],
+      lastUpdated,
+      lastFetched: this.lastFetched,
     };
 
     return {
@@ -177,6 +184,7 @@ Module.register('MMM-TheSpaceDevs', {
       .then((data) => {
         self.scheduleUpdate();
         self.processLaunch(data);
+        this.lastFetched = moment().format('MMMM Do YYYY, h:mm:ss a');
       })
       .catch((error) => {
         if (error.name === 'TooManyRequests') {
