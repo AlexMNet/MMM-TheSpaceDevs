@@ -182,11 +182,11 @@ Module.register('MMM-TheSpaceDevs', {
         if (error.name === 'TooManyRequests') {
           this.error = 'Too many Requests';
           this.updateDom();
-          return self.scheduleUpdate2(600000);
+          return self.scheduleUpdate(600000);
         }
 
         this.error = 'Something went wrong...';
-        self.updateDom(this.config.animationSpeed);
+        self.updateDom();
         Log.info('Something went wrong. Check Configuration...');
       });
   },
