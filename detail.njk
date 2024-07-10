@@ -8,6 +8,10 @@
     <span style="background-color: {{upcomingLaunch.statusColor}}; padding: 3px 10px; border-radius: 0px 0px 0px 8px; font-size: 14px; color: white; position: absolute; bottom: 6px; left: 0px;">Status: {{upcomingLaunch.status}}</span>
   </div>
   <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+    <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;">
+      <small class="dimmed" style="font-size: 11px;">Last fetched: {{upcomingLaunch.lastFetched}}</small>
+      <small class="dimmed" style="font-size: 11px;">Last updated: {{upcomingLaunch.lastUpdated}}</small>
+    </div>
     <h2 style="margin: 0;"> {{upcomingLaunch.rocket}} - {{upcomingLaunch.company}}</h2>
     <h3 style="font-family: monospace; font-weight: bold; color: white; margin: 0;">T {% if upcomingLaunch.isUpcoming %} - {% else %} + {% endif %}{{upcomingLaunch.days}} : {{upcomingLaunch.hours}} : {{upcomingLaunch.minutes}} : {{upcomingLaunch.seconds}}</h3>
     <p style="font-family: sans-serif; color: grey; margin: 0;">{{upcomingLaunch.mission}}</p>
