@@ -13,7 +13,9 @@
       <small class="dimmed" style="font-size: 11px;">Last updated: {{upcomingLaunch.lastUpdated}}</small>
     </div>
     <h2 style="margin: 0;"> {{upcomingLaunch.rocket}} - {{upcomingLaunch.company}}</h2>
-    <h3 style="font-family: monospace; font-weight: bold; color: white; margin: 0;">T {% if upcomingLaunch.isUpcoming %} - {% else %} + {% endif %}{{upcomingLaunch.days}} : {{upcomingLaunch.hours}} : {{upcomingLaunch.minutes}} : {{upcomingLaunch.seconds}}</h3>
+    {% if upcomingLaunch.showCountdown %}
+      <h3 style="font-family: monospace; font-weight: bold; color: white; margin: 0;">T {% if upcomingLaunch.isUpcoming %} - {% else %} + {% endif %}{{upcomingLaunch.days}} : {{upcomingLaunch.hours}} : {{upcomingLaunch.minutes}} : {{upcomingLaunch.seconds}}</h3>
+    {% endif %}
     <p style="font-family: sans-serif; color: grey; margin: 0;">{{upcomingLaunch.mission}}</p>
     <span>{{date}}</span>
   </div>
