@@ -128,6 +128,9 @@ Module.register('MMM-TheSpaceDevs', {
       'MMMM Do YYYY, h:mm:ss a'
     );
 
+    const status = launch.status.abbrev;
+    const showCountdown = !['TBD', 'Hold', 'TBC'].includes(status);
+
     const upcomingLaunch = {
       rocket: launch.rocket.configuration.name,
       image: launch.image,
@@ -138,7 +141,8 @@ Module.register('MMM-TheSpaceDevs', {
       seconds: this.seconds,
       company: launch.launch_service_provider.name,
       mission: launch.mission.description,
-      status: launch.status.abbrev,
+      status,
+      showCountdown,
       orbit: launch.mission.orbit.abbrev,
       isUpcoming: this.isUpcoming,
       statusColor: statusColor[launch.status.abbrev],
