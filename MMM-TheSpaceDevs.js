@@ -170,7 +170,7 @@ Module.register('MMM-TheSpaceDevs', {
     const options = {};
 
     if (apiKey) {
-      options['headers'] = {
+      options.headers = {
         Authorization: `Token ${this.config.apiKey}`,
       };
     }
