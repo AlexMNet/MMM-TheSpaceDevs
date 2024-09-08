@@ -7,7 +7,7 @@ Unauthenticated users have access to 15 api calls per hour.
 
 ## Installation
 
-1. Navigate to your MagicMirror's modules folder, and run the following command: `git clone https://github.com/AlexMNet/MMM-TheSpaceDevs.git`
+1. Navigate to your MagicMirror's modules folder, and run the following command: `git clone https://github.com/AlexMNet/MMM-TheSpaceDevs`
 2. Add the module and a valid configuration to your `config/config.js` file
 
 ## Using the module
