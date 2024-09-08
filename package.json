@@ -1,0 +1,24 @@
+{
+  "name": "mmm-thespacedevs",
+  "version": "1.0.0",
+  "description": "This MagicMirror² module will show you upcoming rocket launches based on TheSpaceDevs API.",
+  "main": "MMM-TheSpaceDevs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMNet/MMM-TheSpaceDevs.git"
+  },
+  "keywords": [
+    "rocket",
+    "launch",
+    "space"
+  ],
+  "author": "Alex Maldonado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexMNet/MMM-TheSpaceDevs/issues"
+  },
+  "homepage": "https://github.com/AlexMNet/MMM-TheSpaceDevs#readme"
+}
