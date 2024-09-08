@@ -159,11 +159,11 @@ Module.register('MMM-TheSpaceDevs', {
   },
 
   fetchLaunchData: function () {
-    var url = `${this.config.apiBase}&limit=${
+    let url = `${this.config.apiBase}&limit=${
       this.config.records
     }${getLocationIds(this.config.locationIds)}`;
 
-    var self = this;
+    let self = this;
     this.error = '';
     const apiKey = this.config.apiKey;
 
@@ -210,7 +210,7 @@ Module.register('MMM-TheSpaceDevs', {
   },
 
   scheduleUpdate: function (delay) {
-    var self = this;
+    let self = this;
 
     const timeoutDelay = delay || this.config.updateInterval;
 

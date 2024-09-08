@@ -15,7 +15,7 @@ Unauthenticated users have access to 15 api calls per hour.
 This is an example configuration for your `config/config.js` file:
 
 ```js
-var config = {
+let config = {
   modules: [
     // TABLE VIEW CONFIG
     {
