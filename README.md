@@ -1,6 +1,6 @@
 # MMM-TheSpaceDevs
 
-This is a module for [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror/).
 
 This module will show you upcoming rocket launches based on [TheSpaceDevs](https://thespacedevs.com/) API.
 Unauthenticated users have access to 15 api calls per hour.
