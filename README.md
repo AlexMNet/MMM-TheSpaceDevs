@@ -1,13 +1,13 @@
 # MMM-TheSpaceDevs
 
-This is a module for [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror/).
 
 This module will show you upcoming rocket launches based on [TheSpaceDevs](https://thespacedevs.com/) API.
 Unauthenticated users have access to 15 api calls per hour.
 
 ## Installation
 
-1. Navigate to your MagicMirror's modules folder, and run the following command: `git clone https://github.com/AlexMNet/MMM-TheSpaceDevs.git`
+1. Navigate to your MagicMirror's modules folder, and run the following command: `git clone https://github.com/AlexMNet/MMM-TheSpaceDevs`
 2. Add the module and a valid configuration to your `config/config.js` file
 
 ## Using the module
@@ -15,7 +15,7 @@ Unauthenticated users have access to 15 api calls per hour.
 This is an example configuration for your `config/config.js` file:
 
 ```js
-var config = {
+let config = {
   modules: [
     // TABLE VIEW CONFIG
     {

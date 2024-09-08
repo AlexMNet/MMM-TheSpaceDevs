@@ -22,21 +22,21 @@ Module.register('MMM-TheSpaceDevs', {
     }
   },
 
-  getScripts: function () {
+  getScripts() {
     return ['moment.js', 'helpers.js'];
   },
 
-  getStyles: function () {
+  getStyles() {
     return ['MMM-TheSpaceDevs.css'];
   },
 
-  getHeader: function () {
+  getHeader() {
     if (this.config.type === 'detail') return null;
     this.data.header = this.config.headerText;
     return this.data.header;
   },
 
-  start: function () {
+  start() {
     Log.info('Starting module: ' + this.name);
 
     moment.locale(config.language);
@@ -158,19 +158,19 @@ Module.register('MMM-TheSpaceDevs', {
     };
   },
 
-  fetchLaunchData: function () {
-    var url = `${this.config.apiBase}&limit=${
+  fetchLaunchData() {
+    const url = `${this.config.apiBase}&limit=${
       this.config.records
     }${getLocationIds(this.config.locationIds)}`;
 
-    var self = this;
+    const self = this;
     this.error = '';
     const apiKey = this.config.apiKey;
 
     const options = {};
 
     if (apiKey) {
-      options['headers'] = {
+      options.headers = {
         Authorization: `Token ${this.config.apiKey}`,
       };
     }
@@ -204,13 +204,13 @@ Module.register('MMM-TheSpaceDevs', {
       });
   },
 
-  processLaunch: function (data) {
+  processLaunch(data) {
     this.launch = data;
     this.updateDom(this.config.animationSpeed);
   },
 
-  scheduleUpdate: function (delay) {
-    var self = this;
+  scheduleUpdate(delay) {
+    const self = this;
 
     const timeoutDelay = delay || this.config.updateInterval;
 
