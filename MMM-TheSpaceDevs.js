@@ -4,13 +4,14 @@ Module.register('MMM-TheSpaceDevs', {
     updateInterval: (60 * 60 * 1000) / 15,
     animationSpeed: 500,
     lang: config.language,
-    records: 5,
+    records: 8,
     type: 'table',
     locationIds: [],
     apiKey: '',
     width: 600,
     headerText: 'Upcoming Launches',
-    apiBase: 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json',
+    apiBase: 'https://ll.thespacedevs.com/2.3.0/launches/upcoming/?format=json',
+    timeZone: 'UTC',
   },
 
   getTemplate() {
@@ -88,14 +89,15 @@ Module.register('MMM-TheSpaceDevs', {
       };
     }
 
-    const launches = this.launch.results.slice(0, 6).map((launch) => {
+    const launches = this.launch.results.slice(0, this.config.records).map((launch) => {
       const rocket = launch.rocket.configuration.name;
       const status = launch.status.abbrev;
-      const date = formatDate(launch.net, launch.status.abbrev);
+      const date = formatDate(launch.net, launch.status.abbrev, this.config.timeZone);
       const window = formatLaunchWindow(
         launch.window_start,
         launch.window_end,
-        status
+        status,
+        this.config.timeZone
       );
 
       return {
@@ -134,7 +136,7 @@ Module.register('MMM-TheSpaceDevs', {
     const upcomingLaunch = {
       rocket: launch.rocket.configuration.name,
       image: launch.image,
-      date: moment(launch.next).format(),
+      date: moment(launch.net).format(),
       hours: this.hours,
       days: this.days,
       minutes: this.minutes,
@@ -159,9 +161,8 @@ Module.register('MMM-TheSpaceDevs', {
   },
 
   fetchLaunchData() {
-    const url = `${this.config.apiBase}&limit=${
-      this.config.records
-    }${getLocationIds(this.config.locationIds)}`;
+    const nowIso = moment().toISOString();
+    const url = `${this.config.apiBase}&limit=${this.config.records}${getLocationIds(this.config.locationIds)}`;
 
     const self = this;
     this.error = '';
@@ -205,7 +206,21 @@ Module.register('MMM-TheSpaceDevs', {
   },
 
   processLaunch(data) {
-    this.launch = data;
+    // Ensure we display the next upcoming launches (future nets), regardless of API ordering.
+    if (!data || !Array.isArray(data.results)) {
+      this.launch = data;
+      this.updateDom(this.config.animationSpeed);
+      return;
+    }
+
+    const now = new Date();
+    const upcoming = data.results
+      .filter((l) => l && l.net && new Date(l.net) >= now)
+      .sort((a, b) => new Date(a.net) - new Date(b.net))
+      .slice(0, this.config.records);
+
+    // Preserve metadata but replace results with the processed upcoming list
+    this.launch = Object.assign({}, data, { results: upcoming });
     this.updateDom(this.config.animationSpeed);
   },
 

@@ -27,6 +27,7 @@ let config = {
         type: 'table',
         locationIds: [11],
         headerText: 'Vandenberg Space Force Base - Launches',
+        timeZone: 'America/New_York'
       },
     },
     // DETAIL VIEW CONFIG
@@ -55,6 +56,7 @@ let config = {
 | `locationIds`    | An array of locationId integers you want data from. If no location is provided you will recieve launch data from all locations              |
 | `headerText`     | Text you want to add to your header for table view                                                                                          |
 | `width`          | Width is used for the detail template.                                                                                                      |
+| `timeZone`       | Time zone for all displayed times.                                                                                                    |
 
 ## Important
 

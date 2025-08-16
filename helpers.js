@@ -1,4 +1,4 @@
-const formatLaunchWindow = (isoDate1, isoDate2, status) => {
+const formatLaunchWindow = (isoDate1, isoDate2, status, timeZone) => {
   if (status === 'TBD') {
     return 'TBD';
   }
@@ -7,6 +7,7 @@ const formatLaunchWindow = (isoDate1, isoDate2, status) => {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
+    timeZone: timeZone || 'UTC',
   };
 
   const windowStart = new Date(isoDate1);
@@ -18,7 +19,7 @@ const formatLaunchWindow = (isoDate1, isoDate2, status) => {
   )} - ${windowEnd.toLocaleTimeString('en-US', options)}`;
 };
 
-const formatDate = (isoDate, status) => {
+const formatDate = (isoDate, status, timeZone) => {
   if (status === 'TBD') {
     return 'TBD';
   }
@@ -27,6 +28,7 @@ const formatDate = (isoDate, status) => {
     weekday: 'short',
     month: 'short',
     day: '2-digit',
+    timeZone: timeZone || 'UTC',
   };
   const date = new Date(isoDate);
 
@@ -35,6 +37,6 @@ const formatDate = (isoDate, status) => {
 
 const getLocationIds = (locations) => {
   return locations.length > 0
-    ? locations.map((location) => `&location__ids=${location}`).join('')
+    ? `&location__ids=${locations.join(',')}`
     : '';
 };
